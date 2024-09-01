@@ -6,9 +6,11 @@
     --dark: #091E3E;
 }
 
-
+body{
+    background-color: aqua !important;
+}
 /*** Spinner ***/
-.spinner {
+/* .spinner {
     width: 40px;
     height: 40px;
     background: var(--primary);
@@ -42,20 +44,20 @@
         transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
         -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
     }
-}
+} */
 
-#spinner {
+/* #spinner {
     opacity: 0;
     visibility: hidden;
     transition: opacity .5s ease-out, visibility 0s linear .5s;
     z-index: 99999;
-}
+} */
 
-#spinner.show {
+/* #spinner.show {
     transition: opacity .5s ease-out, visibility 0s linear 0s;
     visibility: visible;
     opacity: 1;
-}
+} */
 
 
 /*** Heading ***/
