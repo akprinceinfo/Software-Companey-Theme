@@ -98,16 +98,16 @@
 
 
     <!-- JavaScript Libraries -->
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/jquery-3.4.1.min.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/lib/wow/wow.min.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/lib/easing/easing.min.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/lib/waypoints/waypoints.min.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/lib/counterup/counterup.min.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/main.js"></script>
 
     <?php wp_footer(); ?>
 </body>
