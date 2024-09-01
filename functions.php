@@ -40,5 +40,26 @@ function software_cusomizer_regester($wp_customize){
         'setting' => 'theme_logo',
         'section' => 'theme_header_area',
     )));
+
 }
 add_action('customize_register','software_cusomizer_regester');
+
+
+// Menu Register
+
+function software_register_nav_menu(){
+    register_nav_menu('main-menu', 'Header Menu');
+    register_nav_menu('footer-menu', 'Footer Menu');
+
+    load_theme_textdomain('CompaneyTextDomain');
+
+    // register_nav_menu(array(
+    //     'main-menu' => __('Main Menu','CompaneyTextDomain'),
+    //     // 'footer-menu'=> __('footer Menu','CompaneyTextDomain'),
+    // ));
+    
+}  
+
+add_action('after_setup_theme','software_register_nav_menu');   
+
+

@@ -1,7 +1,7 @@
 <!-- Navbar & Carousel Start -->
 <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0" id="hrader_area">
-            <a href="index.html" class="navbar-brand p-0">
+            <a href="<?php echo home_url(); ?>" class="navbar-brand p-0">
                 <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>
                     <img class='' src="<?php echo get_theme_mod('theme_logo'); ?>" alt="" srcset="">
                 </h1>
@@ -11,7 +11,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="index.php" class="nav-item nav-link active">Home</a>
+                <?php
+                    wp_nav_menu(array(
+                        'theme_location' => 'main-menu',
+                        'menu-class' => 'test-class',
+                    ));
+                ?>
+
+                    <!-- <a href="index.php" class="nav-item nav-link active">Home</a>
                     <a href="about.php" class="nav-item nav-link">About</a>
                     <a href="service.php" class="nav-item nav-link">Services</a>
                     <div class="nav-item dropdown">
@@ -30,8 +37,8 @@
                             <a href="testimonial.php" class="dropdown-item">Testimonial</a>
                             <a href="quote.php" class="dropdown-item">Free Quote</a>
                         </div>
-                    </div>
-                    <a href="contact.php" class="nav-item nav-link">Contact</a>
+                    </div> -->
+                    <!-- <a href="contact.php" class="nav-item nav-link">Contact</a> -->
                 </div>
                 <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
                 <a href="<?php echo get_template_directory_uri();?>/https://htmlcodex.com/startup-company-website-template" class="btn btn-primary py-2 px-4 ms-3">Download Pro Version</a>

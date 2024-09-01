@@ -162,6 +162,33 @@ h6,
     border-color: var(--primary) !important;
 }
 
+/* =================
+Custom Nav add
+========================= */
+
+.menu-all-pages-container ul {
+    display: flex;
+    margin-top: 2%;
+  }
+  .menu-all-pages-container ul li {
+    padding: 0 10px;
+    list-style: none;
+   
+    
+  }
+  .menu-all-pages-container ul li a {
+    text-decoration: n;
+    list-style: none;
+    background: #06a3da;
+    color: #fff;
+    padding: 0.8rem .7rem;
+    border-radius: 5px;
+  }
+  .menu-all-pages-container {
+    display: flex;
+    align-items: center;
+  }
+
 @media (max-width: 991.98px) {
     .sticky-top.navbar-dark {
         position: relative;
