@@ -26,7 +26,15 @@
 // }
 // add_action("wp_enqueue_scripts","software_css_js_calling");
 
+// Languages
+load_theme_textdomain('CompaneyTextDomain');
 
+
+//Title
+add_theme_support('title-tag');
+
+
+//Logo Add
 function software_cusomizer_regester($wp_customize){
     $wp_customize->add_section('theme_header_area',array(
         'title' => __('Header Area','themeTextDomain'),
