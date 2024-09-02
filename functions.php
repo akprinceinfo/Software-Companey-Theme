@@ -63,3 +63,18 @@ function software_register_nav_menu(){
 add_action('after_setup_theme','software_register_nav_menu');   
 
 
+// Register Sidbar Widgets
+
+function software_sidebar(){
+    register_sidebar(array(
+        'name' => __('Main Sidebar','CompaneyTextDomain'),
+        'id' => 'sidebar-1',
+        'discription' => __('Our Main About Us','CompaneyTextDomain'),
+        'before_widget' => '<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h5 class="fw-bold text-primary text-uppercase">',
+        'after_title' => '</h5>',
+
+    ));
+}
+add_action('widgets_init','software_sidebar');

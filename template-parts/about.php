@@ -27,11 +27,15 @@
                             <h4 class="text-primary mb-0">+012 345 6789</h4>
                         </div>
                     </div>
-                    <a href="quote.html" class="btn btn-primary py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Request A Quote</a>
+                    <a href="quote.php" class="btn btn-primary py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Request A Quote</a>
                 </div>
                 <div class="col-lg-5" style="min-height: 500px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="<?php echo get_template_directory_uri(); ?>/img/about.jpg" style="object-fit: cover;">
+                        <!-- <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="<?php echo get_template_directory_uri(); ?>/img/about.jpg" style="object-fit: cover;"> -->
+                        <?php if (is_dynamic_sidebar('sidebar-1') ) {
+                          dynamic_sidebar('sidebar-1');
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
