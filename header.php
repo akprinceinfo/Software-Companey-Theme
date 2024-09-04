@@ -1,8 +1,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>Startup - Startup Website Template</title>
+    <meta charset="<?php language_attributes();?>">
+    <meta charset="<?php bloginfo('charset') ?>">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -56,7 +56,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <!-- <div class="navbar-nav ms-auto py-0"> -->
                    
-                   <?php 
+                   <?php          
                         wp_nav_menu(array(
                             'theme-location'=>'primary-menu',
                             'menu_class'	=> "navbar-nav ms-auto py-0", 
@@ -106,3 +106,69 @@
                 <a href="https://htmlcodex.com/startup-company-website-template" class="btn btn-primary py-2 px-4 ms-3">Download Pro Version</a>
             </div>
         </nav>
+
+        <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+            <!-- carousel active   -->
+                <?php
+                    $args = array(
+                        'post_type' => 'sliderAdd',
+                        'posts_per_page' => 3,
+                    );
+
+                    $query = new WP_Query($args);
+                    $i = 0;
+                    if($query->have_posts()) {
+                        while($query->have_posts()) {
+                            $query->the_post();
+                            $i++;
+                        
+                        $slider_subtitle = get_field('slider_sub-title');
+                        $slider_button_text = get_field('slider_button_1text');
+                        $slider__button_1url = get_field('slider_button_1url');
+                        $slider_button_2_text = get_field('slider_button_2_text');
+                        $slider_slider_button_2url = get_field('slider_button_2url');
+                    ?>
+
+                        <div class="carousel-item  <?php if($i==1) echo 'active'; ?>">
+                            <img class="w-100" src="<?php the_post_thumbnail_url();  ?>" alt="<?php the_title();?>">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="p-3" style="max-width: 900px;">
+                                    <h5 class="text-white text-uppercase mb-3 animated slideInDown"><?php echo $slider_subtitle ;?></h5>
+                                    <h1 class="display-1 text-white mb-md-4 animated zoomIn"><?php the_title(); ?></h1>
+                                    <a href="<?php echo $slider__button_1url ;?>" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft"><?php echo $slider_button_text ;?></a>
+                                    <a href="<?php echo $slider_slider_button_2url ;?>" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight"><?php echo $slider_button_2_text ; ?></a>
+                                </div>
+                            </div>
+                        </div>
+                <?php
+                    }
+                }
+                ?>
+
+                
+                <!-- <div class="carousel-item">
+                    <img class="w-100" src="<?php  echo get_template_directory_uri() ?>/img/carousel-2.jpg" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & 2</h5>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Creative & Innovative Digital Solution</h1>
+                            <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Free Quote</a>
+                            <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <!-- Navbar & Carousel End -->
