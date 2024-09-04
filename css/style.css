@@ -6,6 +6,7 @@
     --dark: #091E3E;
 }
 
+
 /*** Spinner ***/
 .spinner {
     width: 40px;
@@ -141,7 +142,7 @@ h6,
 }
 
 .navbar-dark .navbar-nav .nav-link:hover,
-.navbar-dark .navbar-nav .nav-link.active {
+.navbar-dark .navbar-nav .current_page_item .nav-link {
     color: var(--primary);
 }
 
@@ -198,8 +199,10 @@ h6,
         transition: .5s;
     }
 
+    
+
     .navbar-dark .navbar-nav .nav-link:hover::before,
-    .navbar-dark .navbar-nav .nav-link.active::before {
+    .navbar-dark .navbar-nav .current_page_item .nav-link::before {
         width: 100%;
         left: 0;
     }
@@ -211,8 +214,62 @@ h6,
     .sticky-top.navbar-dark .navbar-brand h1 {
         color: var(--primary);
     }
+
+    .navbar-dark .navbar-nav .sub-menu .nav-link::before {
+        display: none;
+        content: unset!important;
+    }
 }
 
+    /* sub-menu */
+
+    .sub-menu {
+        position: absolute;
+        z-index: 1000;
+        display: none;
+        min-width: 10rem;
+        padding: .5rem 0;
+        margin: 0;
+        font-size: 1rem;
+        color: #6B6A75;
+        text-align: left;
+        list-style: none;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid rgba(0,0,0,0.15);
+        border-radius: 2px;
+    }
+
+    .navbar-nav .sub-menu {
+        position: absolute;
+    }
+
+    div .navbar-dark .navbar-nav .sub-menu .nav-item {
+        display: block;
+        width: 100%;
+        padding: .25rem 1rem;
+        clear: both;
+        font-weight: 400;
+        color: #212529;
+        text-align: inherit;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+        margin: 0;
+    }
+
+    .navbar-dark .navbar-nav .sub-menu .nav-item:hover, .navbar-dark .navbar-nav .sub-menu .nav-item:focus {
+        color: #1e2125;
+        background-color: #e9ecef;
+    }
+
+    .menu-item {
+        position: relative;
+    }
+
+    .menu-item:hover .sub-menu {
+        display: block;
+    }
 
 /*** Carousel ***/
 .carousel-caption {

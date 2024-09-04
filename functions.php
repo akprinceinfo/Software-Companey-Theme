@@ -1,5 +1,29 @@
 <?php
 
+
+ /*====================
+       Menu Add
+    =======================*/
+    function software_Menu_add(){
+        // Text Domain Add 
+        load_theme_textdomain( 'CompaneyTextDomain', get_template_directory().'/languages' );
+
+        register_nav_menus(array(
+            'primary_menu' => __( 'Primary Menu', 'CompaneyTextDomain' ),
+        ));
+    }
+    add_action('init','software_Menu_add');
+
+    function add_link_atts($atts) {
+        $atts['class'] = "nav-item nav-link";
+        return $atts;
+      }
+    add_filter( 'nav_menu_link_attributes', 'add_link_atts');
+
+
+    /*====================
+        link add 
+    =======================*/
 function software_linkCalling(){
 
     // Google Web Fonts
