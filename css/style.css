@@ -122,6 +122,12 @@ h6,
     text-align: center;
 }
 
+/* logo add  */
+#hrader_logo img{
+    max-width: 100px;
+    padding: 5px 0;
+}
+
 
 /*** Navbar ***/
 .navbar-dark .navbar-nav .nav-link {
