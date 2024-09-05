@@ -138,3 +138,9 @@ function software_slider_section() {
 }
 add_action( 'init', 'software_slider_section' );
 
+// ACF json 
+
+function software_acf_json_save_point( $path ) {
+    return get_stylesheet_directory() . '/acf-json';
+}
+add_filter( 'acf/settings/save_json', 'software_acf_json_save_point' );
