@@ -1,0 +1,69 @@
+{
+    "key": "group_66d98c0f9fdbb",
+    "title": "Custom Post - Services",
+    "fields": [
+        {
+            "key": "field_66d98c67cab36",
+            "label": "Services-icon",
+            "name": "services-icon",
+            "type": "font-awesome",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "icon_sets": [
+                "solid",
+                "regular",
+                "brands"
+            ],
+            "custom_icon_set": "",
+            "default_label": "",
+            "default_value": "",
+            "save_format": "class",
+            "allow_null": 0,
+            "show_preview": 1,
+            "enqueue_fa": 0,
+            "fa_live_preview": "",
+            "choices": []
+        },
+        {
+            "key": "field_66d98d652d4c9",
+            "label": "Services URL",
+            "name": "services_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "services"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1725533774
+}

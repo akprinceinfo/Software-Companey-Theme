@@ -90,7 +90,7 @@ add_action('customize_register','software_cusomizer_regester');
 
 // software_slider_section Add 
 function software_slider_section() {
-    
+    // slider custom post 
     $args =  array(
             'name'                  => _x( 'Sliders', 'Post type general name', 'CompaneyTextDomain' ),
             'singular_name'         => _x( 'Slider', 'Post type singular name', 'CompaneyTextDomain' ),
@@ -134,7 +134,43 @@ function software_slider_section() {
             'menu_icon'          => 'dashicons-products',
 	);
     register_post_type( 'sliderAdd', $args );
-  
+
+    // Services Custom Post 
+     $args =  array(
+        'name'                  => _x( 'Services', 'Post type general name', 'CompaneyTextDomain' ),
+        'singular_name'         => _x( 'Service', 'Post type singular name', 'CompaneyTextDomain' ),
+        'menu_name'             => _x( 'Services', 'Admin Menu text', 'CompaneyTextDomain' ),
+        'name_admin_bar'        => _x( 'Service', 'Add New on Toolbar', 'CompaneyTextDomain' ),
+        'add_new'               => __( 'Add New', 'CompaneyTextDomain' ),
+        'add_new_item'          => __( 'Add New Services', 'CompaneyTextDomain' ),
+        'new_item'              => __( 'New Service', 'CompaneyTextDomain' ),
+        'edit_item'             => __( 'Edit Service', 'CompaneyTextDomain' ),
+        'view_item'             => __( 'View Service', 'CompaneyTextDomain' ),
+        'all_items'             => __( 'All Service', 'CompaneyTextDomain' ),
+        'search_items'          => __( 'Search Service', 'CompaneyTextDomain' ),
+        'parent_item_colon'     => __( 'Parent Service:', 'CompaneyTextDomain' ),
+        'not_found'             => __( 'No Service found.', 'CompaneyTextDomain' ),
+        'not_found_in_trash'    => __( 'No Service found in Trash.', 'CompaneyTextDomain' ),
+        'menu_icon'             => 'dashicons-products',
+   );
+   $args = array(
+        'labels'             => $args,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array( 'slug' => 'Services' ),
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => false,
+        'menu_position'      => null,
+        'supports'           => array( 'title', 'editor', 'custom-fields' ),
+        'menu_icon'          => 'dashicons-shield',
+);
+register_post_type( 'Services', $args );
+    
+
 }
 add_action( 'init', 'software_slider_section' );
 
