@@ -169,6 +169,41 @@ function software_slider_section() {
         'menu_icon'          => 'dashicons-shield',
 );
 register_post_type( 'Services', $args );
+
+    // Prices Custom Post 
+     $args =  array(
+        'name'                  => _x( 'Prices List', 'Post type general name', 'CompaneyTextDomain' ),
+        'singular_name'         => _x( 'Price', 'Post type singular name', 'CompaneyTextDomain' ),
+        'menu_name'             => _x( 'Prices', 'Admin Menu text', 'CompaneyTextDomain' ),
+        'name_admin_bar'        => _x( 'Price', 'Add New on Toolbar', 'CompaneyTextDomain' ),
+        'add_new'               => __( 'Add New', 'CompaneyTextDomain' ),
+        'add_new_item'          => __( 'Add New Prices', 'CompaneyTextDomain' ),
+        'new_item'              => __( 'New Price', 'CompaneyTextDomain' ),
+        'edit_item'             => __( 'Edit Price', 'CompaneyTextDomain' ),
+        'view_item'             => __( 'View Price', 'CompaneyTextDomain' ),
+        'all_items'             => __( 'All Price', 'CompaneyTextDomain' ),
+        'search_items'          => __( 'Search Price', 'CompaneyTextDomain' ),
+        'parent_item_colon'     => __( 'Parent Price:', 'CompaneyTextDomain' ),
+        'not_found'             => __( 'No Price found.', 'CompaneyTextDomain' ),
+        'not_found_in_trash'    => __( 'No Price found in Trash.', 'CompaneyTextDomain' ),
+        'menu_icon'             => 'dashicons-products',
+   );
+   $args = array(
+        'labels'             => $args,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array( 'slug' => 'Prices' ),
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => false,
+        'menu_position'      => null,
+        'supports'           => array( 'title', 'editor', 'custom-fields' ),
+        'menu_icon'          => 'dashicons-money',
+);
+register_post_type( 'Prices', $args );
     
 
 }
