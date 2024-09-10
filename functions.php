@@ -116,7 +116,6 @@ function software_slider_section() {
             'filter_items_list'     => _x( 'Filter Sliders list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'CompaneyTextDomain' ),
             'items_list_navigation' => _x( 'Sliders list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'CompaneyTextDomain' ),
             'items_list'            => _x( 'Sliders list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'CompaneyTextDomain' ),
-            'menu_icon'             => 'dashicons-products',
        );
        $args = array(
             'labels'             => $args,
@@ -151,7 +150,6 @@ function software_slider_section() {
         'parent_item_colon'     => __( 'Parent Service:', 'CompaneyTextDomain' ),
         'not_found'             => __( 'No Service found.', 'CompaneyTextDomain' ),
         'not_found_in_trash'    => __( 'No Service found in Trash.', 'CompaneyTextDomain' ),
-        'menu_icon'             => 'dashicons-products',
    );
    $args = array(
         'labels'             => $args,
@@ -186,7 +184,6 @@ register_post_type( 'Services', $args );
         'parent_item_colon'     => __( 'Parent Price:', 'CompaneyTextDomain' ),
         'not_found'             => __( 'No Price found.', 'CompaneyTextDomain' ),
         'not_found_in_trash'    => __( 'No Price found in Trash.', 'CompaneyTextDomain' ),
-        'menu_icon'             => 'dashicons-products',
    );
    $args = array(
         'labels'             => $args,
@@ -201,10 +198,43 @@ register_post_type( 'Services', $args );
         'hierarchical'       => false,
         'menu_position'      => null,
         'supports'           => array( 'title', 'editor', 'custom-fields' ),
-        'menu_icon'          => 'dashicons-money',
+        'menu_icon'          => 'dashicons-image-rotate-left',
 );
 register_post_type( 'Prices', $args );
     
+    // Testimonial Custom Post 
+    $args =  array(
+        'name'                  => _x( 'Testimonial List', 'Post type general name', 'CompaneyTextDomain' ),
+        'singular_name'         => _x( 'Testimonial', 'Post type singular name', 'CompaneyTextDomain' ),
+        'menu_name'             => _x( 'Testimonials', 'Admin Menu text', 'CompaneyTextDomain' ),
+        'name_admin_bar'        => _x( 'Testimonial', 'Add New on Toolbar', 'CompaneyTextDomain' ),
+        'add_new'               => __( 'Add New', 'CompaneyTextDomain' ),
+        'add_new_item'          => __( 'Add New Prices', 'CompaneyTextDomain' ),
+        'new_item'              => __( 'New Testimonial', 'CompaneyTextDomain' ),
+        'edit_item'             => __( 'Edit Testimonial', 'CompaneyTextDomain' ),
+        'view_item'             => __( 'View Testimonial', 'CompaneyTextDomain' ),
+        'all_items'             => __( 'All Testimonial', 'CompaneyTextDomain' ),
+        'search_items'          => __( 'Search Testimonial', 'CompaneyTextDomain' ),
+        'parent_item_colon'     => __( 'Parent Testimonial:', 'CompaneyTextDomain' ),
+        'not_found'             => __( 'No Testimonial found.', 'CompaneyTextDomain' ),
+        'not_found_in_trash'    => __( 'No Testimonial found in Trash.', 'CompaneyTextDomain' ),
+    );
+    $args = array(
+        'labels'             => $args,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array( 'slug' => 'Testimonial' ),
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => false,
+        'menu_position'      => null,
+        'supports'           => array( 'title' ),
+        'menu_icon'          => 'dashicons-testimonial',
+    );
+    register_post_type( 'Testimonial', $args );
 
 }
 add_action( 'init', 'software_slider_section' );
