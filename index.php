@@ -538,24 +538,53 @@
                 <h1 class="mb-0">Professional Stuffs Ready to Help Your Business</h1>
             </div>
             <div class="row g-5">
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
+                <?php 
+                    $args_check = array(
+                        'post_type' => 'TeamMember',
+                        'posts_per_page' => 3,
+                    );
+                    $query = new WP_Query($args_check);
+
+                    if ($query->have_posts()) {
+                        while ($query->have_posts()) {
+                           $query->the_post();
+
+                           $teamMembers_designation = get_field('designation');
+                           $teamMembers_team_members_photo = get_field('team_members_photo');
+                           $teamMembers_socil_icons = get_field('socal_icone_list');
+                    ?>
+                    <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
                     <div class="team-item bg-light rounded overflow-hidden">
                         <div class="team-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="<?php echo get_template_directory_uri() ?>/img/team-1.jpg" alt="">
+                            <img class="img-fluid w-100" src="<?php echo $teamMembers_team_members_photo; ?>" alt="<?php echo the_title(); ?>">
                             <div class="team-social">
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
+
+                            <?php 
+                                foreach($teamMembers_socil_icons as $teamMembers_socil_icon){
+                            ?>
+
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded" href="<?php echo $teamMembers_socil_icon['team_socal_icon_link'];?>"><i class="<?php echo $teamMembers_socil_icon['team_socal_icon'] ;?>"></i></a>
+
+                                <?php } ?>
+
+                                <!-- <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
                                 <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-linkedin-in fw-normal"></i></a> -->
                             </div>
                         </div>
                         <div class="text-center py-4">
-                            <h4 class="text-primary">Full Name</h4>
-                            <p class="text-uppercase m-0">Designation</p>
+                            <h4 class="text-primary"><?php echo the_title(); ?></h4>
+                            <p class="text-uppercase m-0"><?php echo $teamMembers_designation ;?></p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
+                    <?php
+                        }
+                        wp_reset_postdata();
+                    }  
+                ?>
+                
+                <!-- <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
                     <div class="team-item bg-light rounded overflow-hidden">
                         <div class="team-img position-relative overflow-hidden">
                             <img class="img-fluid w-100" src="<?php echo get_template_directory_uri() ?>/img/team-2.jpg" alt="">
@@ -588,7 +617,7 @@
                             <p class="text-uppercase m-0">Designation</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

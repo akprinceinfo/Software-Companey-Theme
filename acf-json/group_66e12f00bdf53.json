@@ -1,0 +1,133 @@
+{
+    "key": "group_66e12f00bdf53",
+    "title": "Custom Post : Team Members",
+    "fields": [
+        {
+            "key": "field_66e12f11fa596",
+            "label": "Designation",
+            "name": "designation",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_66e12f29fa597",
+            "label": "Team Members photo",
+            "name": "team_members_photo",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_66e139aa13234",
+            "label": "Socal Icone_list",
+            "name": "socal_icone_list",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_66e13a2013235",
+                    "label": "Team Socal icon",
+                    "name": "team_socal_icon",
+                    "type": "font-awesome",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "icon_sets": [
+                        "fas",
+                        "far",
+                        "fab"
+                    ],
+                    "custom_icon_set": "",
+                    "default_label": "",
+                    "default_value": "",
+                    "save_format": "class",
+                    "allow_null": 0,
+                    "show_preview": 1,
+                    "enqueue_fa": 0,
+                    "fa_live_preview": "",
+                    "choices": []
+                },
+                {
+                    "key": "field_66e13a6713236",
+                    "label": "Team Socal icon link",
+                    "name": "team_socal_icon_link",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "teammember"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1726037431
+}

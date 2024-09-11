@@ -236,6 +236,41 @@ register_post_type( 'Prices', $args );
     );
     register_post_type( 'Testimonial', $args );
 
+
+    // Team Members Custom Post 
+    $args =  array(
+        'name'                  => _x( 'Team Members List', 'Post type general name', 'CompaneyTextDomain' ),
+        'singular_name'         => _x( 'Team Member', 'Post type singular name', 'CompaneyTextDomain' ),
+        'menu_name'             => _x( 'Team Members', 'Admin Menu text', 'CompaneyTextDomain' ),
+        'name_admin_bar'        => _x( 'Team Member', 'Add New on Toolbar', 'CompaneyTextDomain' ),
+        'add_new'               => __( 'Add New', 'CompaneyTextDomain' ),
+        'add_new_item'          => __( 'Add New Team Members', 'CompaneyTextDomain' ),
+        'new_item'              => __( 'New Team Member', 'CompaneyTextDomain' ),
+        'edit_item'             => __( 'Edit Team Member', 'CompaneyTextDomain' ),
+        'view_item'             => __( 'View Team Member', 'CompaneyTextDomain' ),
+        'all_items'             => __( 'All Team Member', 'CompaneyTextDomain' ),
+        'search_items'          => __( 'Search Team Member', 'CompaneyTextDomain' ),
+        'parent_item_colon'     => __( 'Parent Team Member:', 'CompaneyTextDomain' ),
+        'not_found'             => __( 'No Team Member found.', 'CompaneyTextDomain' ),
+        'not_found_in_trash'    => __( 'No Team Member found in Trash.', 'CompaneyTextDomain' ),
+    );
+    $args = array(
+        'labels'             => $args,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array( 'slug' => 'Team Members' ),
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => false,
+        'menu_position'      => null,
+        'supports'           => array( 'title' ),
+        'menu_icon'          => 'dashicons-image-filter',
+    );
+    register_post_type( 'TeamMember', $args );
+
 }
 add_action( 'init', 'software_slider_section' );
 
