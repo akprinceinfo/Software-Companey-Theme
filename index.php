@@ -1,4 +1,5 @@
-<!-- Header area and Nav Area  -->
+
+    <!-- Header area and Nav Area  -->
     <?php get_header( ); ?>
 
     <!-- ===================== -->
