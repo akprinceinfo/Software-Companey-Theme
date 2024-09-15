@@ -1,8 +1,8 @@
-<html lang="en">
 
+<html lang="<?php language_attributes();?>" class="no-js" >
 <head>
-    <meta charset="<?php language_attributes();?>">
-    <meta charset="<?php bloginfo('charset') ?>">
+    <meta charset="<?php language_attributes();?>"> 
+    <meta charset="<?php bloginfo('charset');?>">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -63,47 +63,6 @@
                             'container' => 'false',
                         ));
                     ?>
-                <!-- <ul>
-                    <li>
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                    </li>
-                    <li>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                    </li>
-                    <li>
-                        <a href="service.html" class="nav-item nav-link">Services</a>
-                    </li>
-                    
-                    
-                    
-                    
-                    <li>
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Blog</a>
-                    </li>
-                    <ul>
-                        <li><a href="blog.html" class="dropdown-item">Blog Grid</a></li>
-                        <li><a href="detail.html" class="dropdown-item">Blog Detail</a></li>
-                    </ul>
-                       
-                    <li>
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>    
-                    </li>
-                    <ul>
-                        <li> <a href="price.html" class="dropdown-item">Pricing Plan</a></li>
-                        <li><a href="feature.html" class="dropdown-item">Our features</a></li>
-                        <li><a href="team.html" class="dropdown-item">Team Members</a></li>
-                        <li><a href="testimonial.html" class="dropdown-item">Testimonial</a></li>
-                        <li> <a href="quote.html" class="dropdown-item">Free Quote</a></li>
-                    </ul>
-					<li>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
-                    </li>
-                    
-                </ul> -->
-
-                <!-- </div> -->
-                <!-- <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
-                <a href="https://htmlcodex.com/startup-company-website-template" class="btn btn-primary py-2 px-4 ms-3">Download Pro Version</a> -->
             </div>
         </nav>
 

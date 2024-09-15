@@ -22,6 +22,7 @@
     }
     add_action('init','software_Menu_add');
 
+    // nav class add 
     function add_link_atts($atts) {
         $atts['class'] = "nav-item nav-link";
         return $atts;
@@ -280,3 +281,120 @@ function software_acf_json_save_point( $path ) {
     return get_stylesheet_directory() . '/acf-json';
 }
 add_filter( 'acf/settings/save_json', 'software_acf_json_save_point' );
+
+
+
+  
+  /**
+ * Add a sidebar.
+ */
+function software_theme_slug_widgets_init() {
+	register_sidebar( array(
+		'name'          => __( 'Main Sidebar', 'CompaneyTextDomain' ),
+		'id'            => 'main-sidebar',
+		'description'   => __( 'Widgets in this area will be shown on all posts and pages.', 'CompaneyTextDomain' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s mb-5 ">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<div class="section-title section-title-sm position-relative pb-3 mb-4">
+                            <h3 class="mb-0">',
+		'after_title'   => '</h3></div>',
+	) );
+}
+add_action( 'widgets_init', 'software_theme_slug_widgets_init' );
+
+
+
+
+
+
+/**
+ * --- stratup serch widget --
+ */
+ 
+
+// Creating the widget
+
+class software_serch_wpb_widget extends WP_Widget {
+    function __construct() {
+        parent::__construct(
+        // Base ID of your widget
+            'software_serch_wpb_widget',
+ 
+            // Widget name will appear in UI
+            __( 'software serch widget', 'CompaneyTextDomain' ),
+ 
+            // Widget description
+            [
+                'description' => __( 'Search widget For Blog Page', 'CompaneyTextDomain' ),
+            ]
+        );
+    }
+ 
+    // Creating widget front-end
+    public function widget( $args, $instance ) {
+        $title = apply_filters( 'widget_title', $instance['title'] );
+ 
+        // before and after widget arguments are defined by themes
+        echo $args['before_widget'];
+        if ( ! empty( $title ) ) {
+            echo $args['before_title'] . $title . $args['after_title'];
+        }
+        ?>
+
+            <!-- Search Form Start -->
+            <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
+                    <form action="<?php echo home_url( '/' );?>" method="get">
+                        <div class="input-group">
+                            <input type="search" class="form-control p-3" placeholder="Keyword" value="<?php echo get_search_query() ?>" name="s">
+                            <button type="submit" value="<?php echo esc_attr_x( 'Search', 'submit button' ) ?>" class="btn btn-primary px-4"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+            <!-- Search Form End -->
+
+        <?php
+        
+        echo $args['after_widget'];
+    }
+ 
+    // Widget Settings Form
+    public function form( $instance ) {
+        if ( isset( $instance['title'] ) ) {
+            $title = $instance['title'];
+        } else {
+            $title = __( 'New title', 'CompaneyTextDomain' );
+        }
+ 
+        // Widget admin form
+        ?>
+        <p>
+            <label for="<?php echo $this->get_field_id( 'title' ); ?>">
+                <?php _e( 'Title:', 'CompaneyTextDomain' ); ?>
+            </label>
+            <input
+                    class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>"
+                    name="<?php echo $this->get_field_name( 'title' ); ?>"
+                    type="text"
+                    value="<?php echo esc_attr( $title ); ?>"
+            />
+        </p>
+        <?php
+    }
+ 
+    // Updating widget replacing old instances with new
+    public function update( $new_instance, $old_instance ) {
+        $instance          = array();
+        $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+ 
+        return $instance;
+    }
+ 
+    // Class wpb_widget ends here
+}
+ 
+// Register and load the widget
+function software_serch_widget_load() {
+    register_widget( 'software_serch_wpb_widget' );
+}
+ 
+add_action( 'widgets_init', 'software_serch_widget_load' );

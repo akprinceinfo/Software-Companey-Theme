@@ -26,7 +26,7 @@
                         <div class="team-img position-relative overflow-hidden">
                             <img class="img-fluid w-100" src="<?php echo $teamMembers_team_members_photo; ?>" alt="<?php echo the_title(); ?>">
                             <div class="team-social">
-
+                            <!-- icon  -->
                             <?php 
                                 foreach($teamMembers_socil_icons as $teamMembers_socil_icon){
                             ?>

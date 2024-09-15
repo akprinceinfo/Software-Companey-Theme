@@ -1,37 +1,19 @@
+<?php get_header(); ?>
 
+<?php  get_template_part('template-parts/content','breadcumb'); ?>
 
-    <!-- header  -->
-    <?php 
-    
-    /*
-        Template Name: Template Blog
-    */
-    
-    ?>
-    <?php get_header(); ?>
-
-    <?php  get_template_part('template-parts/content','breadcumb'); ?>
- 
-
-
-
-    <!-- Blog Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+<!-- Blog Start -->
+<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
                 <!-- Blog list Start -->
                 <div class="col-lg-8">
                     <div class="row g-5">
                          <?php 
-                            $args = array(
-                                'post_type' => 'post',
-                                
-                            );
-                
-                            $query = new WP_Query($args);
-                            if ($query->have_posts()) {
-                                while($query->have_posts()) {
-                                    $query->the_post();
+                          
+                            if(have_posts()) {
+                                while(have_posts()) {
+                                    the_post();
                                 
                                     //user Name Show
                                     $author_id = get_the_author_meta( 'ID' ); 
@@ -86,10 +68,5 @@
     <!-- Blog End -->
 
 
-    
-    <!-- footer section  -->
+
     <?php get_footer(); ?>
-
-
-
-   

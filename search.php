@@ -1,37 +1,39 @@
 
-
-    <!-- header  -->
-    <?php 
-    
-    /*
-        Template Name: Template Blog
-    */
-    
-    ?>
-    <?php get_header(); ?>
-
-    <?php  get_template_part('template-parts/content','breadcumb'); ?>
- 
+<?php get_header(); ?>
 
 
+ <!-- header section Start -->
+ <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+    <div class="row py-5">
+        <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+            <h1 class="display-4 text-white animated zoomIn">
+                
+                <?php 
+                   printf(
+                    // translation: %s: Search term 
+                    esc_html__('Results for "%s"','textDomain'),
+                    '<span class="page-description serch-term">'. esc_html(get_search_query()). '</span>'
+                   );
+                ?>
+            </h1>
+           
+        </div>
+    </div>
+</div>
+ <!-- header section End -->
 
-    <!-- Blog Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+ <!-- Blog Start -->
+<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
                 <!-- Blog list Start -->
                 <div class="col-lg-8">
                     <div class="row g-5">
                          <?php 
-                            $args = array(
-                                'post_type' => 'post',
-                                
-                            );
-                
-                            $query = new WP_Query($args);
-                            if ($query->have_posts()) {
-                                while($query->have_posts()) {
-                                    $query->the_post();
+                          
+                            if(have_posts()) {
+                                while(have_posts()) {
+                                    the_post();
                                 
                                     //user Name Show
                                     $author_id = get_the_author_meta( 'ID' ); 
@@ -65,6 +67,8 @@
                 <?php
                     }
                     wp_reset_postdata();    
+                }else{
+                    echo "No Post Found";
                 }
                 
                 ?>
@@ -86,10 +90,5 @@
     <!-- Blog End -->
 
 
-    
-    <!-- footer section  -->
-    <?php get_footer(); ?>
 
-
-
-   
+<?php get_footer(); ?>
