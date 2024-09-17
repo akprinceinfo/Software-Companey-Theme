@@ -8,8 +8,12 @@
         // Text Domain Add 
         load_theme_textdomain( 'CompaneyTextDomain', get_template_directory().'/languages' );
 
+        // Menus Add
         register_nav_menus(array(
             'primary_menu' => __( 'Primary Menu', 'CompaneyTextDomain' ),
+
+            'footer1_menu' => __( 'Footer 1 Menu', 'CompaneyTextDomain' ),
+            'footer2_menu' => __( 'Footer 2 Menu', 'CompaneyTextDomain' ),
         ));
 
         //Theme Title add
@@ -318,6 +322,37 @@ function startup_footer_address_widget() {
     ) );
 }
 add_action( 'widgets_init', 'startup_footer_address_widget' );
+
+// footer section 1
+function startup_footer_1_address_widget() {
+    register_sidebar( array(
+        'name'          => __( 'footer-1', 'startup' ),
+        'id'            => 'footer-1',
+        'description'   => __( 'Widgets in this area will be shown on all posts and pages.', 'startup' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<div class="section-title section-title-sm position-relative pb-3 mb-4">
+        <h3 class="text-light mb-0">',
+        'after_title'   => '</h3></div>',
+    ) );
+}
+add_action( 'widgets_init', 'startup_footer_1_address_widget' );
+
+// footer section 2
+function startup_footer_2_address_widget() {
+    register_sidebar( array(
+        'name'          => __( 'footer-2', 'startup' ),
+        'id'            => 'footer-2',
+        'description'   => __( 'Widgets in this area will be shown on all posts and pages.', 'startup' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<div class="section-title section-title-sm position-relative pb-3 mb-4">
+        <h3 class="text-light mb-0">',
+        'after_title'   => '</h3></div>',
+    ) );
+}
+add_action( 'widgets_init', 'startup_footer_2_address_widget' );
+
 
 /**
  * --- stratup serch widget --
