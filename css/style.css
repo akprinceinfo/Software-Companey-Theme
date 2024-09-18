@@ -623,3 +623,80 @@ h6,
   #menu-footer-3 li a:hover {
     color: #0582ae;
   }
+
+
+
+
+
+
+  /* ================================== */
+
+
+  .comment-form-comment {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6B6A75;
+    background-color: #fff;
+    background-clip: padding-box;
+    appearance: none;
+    border-radius: 2px;
+    transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+  }
+  .comment-form-comment label {
+    display: block;
+  }
+  #comment {
+    width: 100%;
+    border: 1px solid #ced4da;
+  }
+  #commentform input,
+  #commentform textarea{
+    padding: 10px;
+  }
+.comment-form-author input {
+	width: 100%;
+    /* border: 1px solid #ced4da; */
+}
+.comment-form-email input {
+	width: 100%;
+    border: 1px solid #ced4da;
+}
+.comment-form-url input {
+	width: 100%;
+    border: 1px solid #ced4da;
+}
+.comment-form-cookies-consent {
+	display: none;
+}
+
+
+#commentform p label {
+	display: none;
+}
+#reply-title,
+#comments {
+	display: none;
+}
+ 
+.form-submit input {
+	background: #06A3DA;
+	color: #fff;
+	font-size: 20px;
+	width: 100%;
+	border-color: #00BBFD;
+	border-radius: 4px;
+    transition: .5s;
+}
+
+
+.form-submit input:hover {
+    box-shadow: inset 0 0 0 0 var(--primary);
+  }
+  .form-submit input:hover {
+    color: #000;
+    background-color: #2bb1e0;
+    border-color: #1facde;
+  }

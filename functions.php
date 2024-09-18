@@ -307,7 +307,7 @@ function software_theme_slug_widgets_init() {
 add_action( 'widgets_init', 'software_theme_slug_widgets_init' );
 
   /**
- * Add a Footer Widgets.
+ * Add a Footer Widgets. section add
  */
 function startup_footer_address_widget() {
     register_sidebar( array(
@@ -323,7 +323,7 @@ function startup_footer_address_widget() {
 }
 add_action( 'widgets_init', 'startup_footer_address_widget' );
 
-// footer section 1
+// footer section 1 section add
 function startup_footer_1_address_widget() {
     register_sidebar( array(
         'name'          => __( 'footer-1', 'startup' ),
@@ -338,7 +338,7 @@ function startup_footer_1_address_widget() {
 }
 add_action( 'widgets_init', 'startup_footer_1_address_widget' );
 
-// footer section 2
+// footer section 2 section add
 function startup_footer_2_address_widget() {
     register_sidebar( array(
         'name'          => __( 'footer-2', 'startup' ),
@@ -354,724 +354,71 @@ function startup_footer_2_address_widget() {
 add_action( 'widgets_init', 'startup_footer_2_address_widget' );
 
 
-/**
- * --- stratup serch widget --
- */
- 
 
-// Creating the widget
-class software_serch_wpb_widget extends WP_Widget {
-    function __construct() {
-        parent::__construct(
-        // Base ID of your widget
-            'software_serch_wpb_widget',
- 
-            // Widget name will appear in UI
-            __( 'software serch widget', 'CompaneyTextDomain' ),
- 
-            // Widget description
-            [
-                'description' => __( 'Search widget For Blog Page', 'CompaneyTextDomain' ),
-            ]
-        );
-    }
- 
-    // Creating widget front-end
-    public function widget( $args, $instance ) {
-        $title = apply_filters( 'widget_title', $instance['title'] );
- 
-        // before and after widget arguments are defined by themes
-        echo $args['before_widget'];
-        if ( ! empty( $title ) ) {
-            echo $args['before_title'] . $title . $args['after_title'];
-        }
-        ?>
+// comment field bottom show
 
-            <!-- Search Form Start -->
-            <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
-                    <form action="<?php echo home_url( '/' );?>" method="get">
-                        <div class="input-group">
-                            <input type="search" class="form-control p-3" placeholder="Keyword" value="<?php echo get_search_query() ?>" name="s">
-                            <button type="submit" value="<?php echo esc_attr_x( 'Search', 'submit button' ) ?>" class="btn btn-primary px-4"><i class="fa fa-search"></i></button>
-                        </div>
-                    </form>
-                </div>
-            <!-- Search Form End -->
-
-        <?php
-        
-        echo $args['after_widget'];
-    }
- 
-    // Widget Settings Form ||  Backend
-    public function form( $instance ) {
-        if ( isset( $instance['title'] ) ) {
-            $title = $instance['title'];
-        } else {
-            $title = __( 'New title', 'CompaneyTextDomain' );
-        }
- 
-        // Widget admin form
-        ?>
-        <p>
-            <label for="<?php echo $this->get_field_id( 'title' ); ?>">
-                <?php _e( 'Title:', 'CompaneyTextDomain' ); ?>
-            </label>
-            <input
-                    class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>"
-                    name="<?php echo $this->get_field_name( 'title' ); ?>"
-                    type="text"
-                    value="<?php echo esc_attr( $title ); ?>"
-            />
-        </p>
-        <?php
-    }
- 
-    // Updating widget replacing old instances with new
-    public function update( $new_instance, $old_instance ) {
-        $instance          = array();
-        $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
- 
-        return $instance;
-    }
- 
-    // Class wpb_widget ends here
+function software_move_comment_field( $fields ) {
+    $comment_field = $fields['comment'];
+    unset( $fields['comment'] );
+    $fields['comment'] = $comment_field;
+    return $fields;
 }
- 
-// Register and load the widget
-function software_serch_widget_load() {
-    register_widget( 'software_serch_wpb_widget' );
-}
- 
-add_action( 'widgets_init', 'software_serch_widget_load' );
+add_filter( 'comment_form_fields', 'software_move_comment_field' );
+
+
 
 
 
 
 /**
- * --- stratup Category widget --
+ * Comment Form Placeholder Author, Email, URL
  */
- 
 
-// Creating the widget
-class software_cetegory_wpb_widget extends WP_Widget {
-    function __construct() {
-        parent::__construct(
-        // Base ID of your widget
-            'software_cetegory_wpb_widget',
- 
-            // Widget name will appear in UI
-            __( 'software cetegory widget', 'CompaneyTextDomain' ),
- 
-            // Widget description
-            [
-                'description' => __( 'cetegory widget For Blog Page', 'CompaneyTextDomain' ),
-            ]
-        );
-    }
- 
-    // Creating widget front-end
-    public function widget( $args, $instance ) {
-        $title = apply_filters( 'widget_title', $instance['title'] );
- 
-        // before and after widget arguments are defined by themes
-        echo $args['before_widget'];
-        if ( ! empty( $title ) ) {
-            echo $args['before_title'] . $title . $args['after_title'];
-        }
-        ?>
 
-           <!-- Category Start -->
-                <div class="link-animated d-flex flex-column justify-content-start">
-                        <?php 
-                            $categories = get_categories();
-                            foreach ($categories as $categorie) {
-                                //category id Url add
-                                $category_link = get_category_link($categorie->term_id);
-                        ?>
-                            <a class="h5 fw-semi-bold bg-light rounded py-2 px-3 mb-2" href="<?php echo $category_link; ?>"><i class="fa fa-arrow-right me-2"></i><?php echo $categorie->name;?> , Post : <?php echo $categorie->count ?></a>
-                        <?php
-                            }
-                        ?>    
-                    
-                </div>
-            <!-- Category End -->
-
-        <?php
-        
-        echo $args['after_widget'];
-    }
- 
-    // Widget Settings Form ||  Backend
-    public function form( $instance ) {
-        if ( isset( $instance['title'] ) ) {
-            $title = $instance['title'];
-        } else {
-            $title = __( 'New title', 'CompaneyTextDomain' );
-        }
- 
-        // Widget admin form
-        ?>
-        <p>
-            <label for="<?php echo $this->get_field_id( 'title' ); ?>">
-                <?php _e( 'Title:', 'CompaneyTextDomain' ); ?>
-            </label>
-            <input
-                    class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>"
-                    name="<?php echo $this->get_field_name( 'title' ); ?>"
-                    type="text"
-                    value="<?php echo esc_attr( $title ); ?>"
-            />
-        </p>
-        <?php
-    }
- 
-    // Updating widget replacing old instances with new
-    public function update( $new_instance, $old_instance ) {
-        $instance          = array();
-        $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
- 
-        return $instance;
-    }
- 
-    // Class wpb_widget ends here
+ // change input text in wordpress comment form
+ function software_comment_form_fields( $fields ) {
+	foreach( $fields as &$field ) {
+		$field = str_replace( 'id="author"', 'id="author" placeholder="Your Name"', $field );
+		$field = str_replace( 'id="email"', 'id="email" placeholder="Your Email"', $field );
+		$field = str_replace( 'id="url"', 'id="url" placeholder="Website"', $field );
+	}
+	return $fields;
 }
- 
-// Register and load the widget
-function software_cetegory_widget_load() {
-    register_widget( 'software_cetegory_wpb_widget' );
+add_filter( 'comment_form_default_fields', 'software_comment_form_fields' );
+
+// change Comment text in wordpress comment form
+function software_comment_textarea_placeholder( $args ) {
+	$args['comment_field'] = str_replace( 'textarea', 'textarea placeholder="Your Comment"', $args['comment_field'] );
+	return $args;
 }
- 
-add_action( 'widgets_init', 'software_cetegory_widget_load' );
+add_filter( 'comment_form_defaults', 'software_comment_textarea_placeholder' );
 
-
-
-
-/**
- * --- stratup Recent Psot widget --
- */
- 
-
-// Creating the widget
-class software_recent_post_wpb_widget extends WP_Widget {
-    function __construct() {
-        parent::__construct(
-        // Base ID of your widget
-            'software_recent_post_wpb_widget',
- 
-            // Widget name will appear in UI
-            __( 'software Recent Psot widget', 'CompaneyTextDomain' ),
- 
-            // Widget description
-            [
-                'description' => __( 'cetegory Recent Psot For Blog Page', 'CompaneyTextDomain' ),
-            ]
-        );
-    }
- 
-    // Creating widget front-end
-    public function widget( $args, $instance ) {
-        $title = apply_filters( 'widget_title', $instance['title'] );
- 
-        // before and after widget arguments are defined by themes
-        echo $args['before_widget'];
-        if ( ! empty( $title ) ) {
-            echo $args['before_title'] . $title . $args['after_title'];
-        }
-        ?>
-
-        <?php 
-            $arg = array(
-                'post_type' => 'post',
-                'posts_per_page' => 3,
-            );
-            $query = new WP_Query($arg);
-            if ($query->have_posts()) {
-                while($query->have_posts()){
-                    $query->the_post();
-            ?>
-
-                <div class="d-flex rounded overflow-hidden mb-3">
-                    <img class="img-fluid" src="<?php the_post_thumbnail_url() ?>" style="width: 100px; height: 100px; object-fit: cover;" alt="">
-                    <a href="" class="h5 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0"><?php the_title(); ?>
-                    </a>
-                </div>
-
-            <?php
-                }
-                wp_reset_postdata();
-            }
-        
-            echo $args['after_widget'];
-    }
- 
-    // Widget Settings Form ||  Backend
-    public function form( $instance ) {
-        if ( isset( $instance['title'] ) ) {
-            $title = $instance['title'];
-        } else {
-            $title = __( 'New title', 'CompaneyTextDomain' );
-        }
- 
-        // Widget admin form
-        ?>
-        <p>
-            <label for="<?php echo $this->get_field_id( 'title' ); ?>">
-                <?php _e( 'Title:', 'CompaneyTextDomain' ); ?>
-            </label>
-            <input
-                    class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>"
-                    name="<?php echo $this->get_field_name( 'title' ); ?>"
-                    type="text"
-                    value="<?php echo esc_attr( $title ); ?>"
-            />
-        </p>
-        <?php
-    }
- 
-    // Updating widget replacing old instances with new
-    public function update( $new_instance, $old_instance ) {
-        $instance          = array();
-        $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
- 
-        return $instance;
-    }
- 
-    // Class wpb_widget ends here
+// change submit button text in wordpress comment form
+function software_change_submit_button_text( $defaults ) {
+    $defaults['label_submit'] = 'Send';
+    return $defaults;
 }
+add_filter( 'comment_form_defaults', 'software_change_submit_button_text' );
+
+
+
+
+
+//  serch widget
+include_once get_template_directory().'/inc/widgets/serch-widget.php';
+
+
+// tratup Category widget
+include_once get_template_directory().'/inc/widgets/category-widget.php';
+
+//  Recent Psot widget
+include_once get_template_directory().'/inc/widgets/category-recentPsot.php';
+
+// Psot Tag widget
+include_once get_template_directory().'/inc/widgets/postTag-widget.php';
+
+// Plan Text widget 
+include_once get_template_directory().'/inc/widgets/plan-textWidget.php';
  
-// Register and load the widget
-function software_recent_post_widget_load() {
-    register_widget( 'software_recent_post_wpb_widget' );
-}
- 
-add_action( 'widgets_init', 'software_recent_post_widget_load' );
-
-
-
-
-/**
- * --- stratup Psot Tag widget --
- */
- 
-
-// Creating the widget
-class software_post_tag_wpb_widget extends WP_Widget {
-    function __construct() {
-        parent::__construct(
-        // Base ID of your widget
-            'software_post_tag_wpb_widget',
- 
-            // Widget name will appear in UI
-            __( 'software Psot Tag widget', 'CompaneyTextDomain' ),
- 
-            // Widget description
-            [
-                'description' => __( 'cetegory Psot Tag For Blog Page', 'CompaneyTextDomain' ),
-            ]
-        );
-    }
- 
-    // Creating widget front-end
-    public function widget( $args, $instance ) {
-        $title = apply_filters( 'widget_title', $instance['title'] );
- 
-        // before and after widget arguments are defined by themes
-        echo $args['before_widget'];
-        if ( ! empty( $title ) ) {
-            echo $args['before_title'] . $title . $args['after_title'];
-
-        ?>
-
-             <!-- Tags Start -->
-                <div class="d-flex flex-wrap m-n1">
-                   
-                    <?php 
-                        $tags = get_tags();
-                        foreach($tags as $tag){
-                        //tag link add
-                        $tag_link = get_tag_link($tag->term_id);
-                    ?>
-                         <a href="<?php echo $tag_link ?>" class="btn btn-light m-1"><?php echo $tag->name; ?></a>
-                    <?php
-                        }
-                    ?>
-                            
-                </div>
-                    <!-- Tags End -->
-        <?php
-            echo $args['after_widget'];
-        } 
-    }
-
- 
-    // Widget Settings Form ||  Backend
-    public function form( $instance ) {
-        if ( isset( $instance['title'] ) ) {
-            $title = $instance['title'];
-        } else {
-            $title = __( 'Tag Cloud', 'CompaneyTextDomain' );
-        }
- 
-        // Widget admin form
-        ?>
-        <p>
-            <label for="<?php echo $this->get_field_id( 'title' ); ?>">
-                <?php _e( 'Title:', 'CompaneyTextDomain' ); ?>
-            </label>
-            <input
-                    class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>"
-                    name="<?php echo $this->get_field_name( 'title' ); ?>"
-                    type="text"
-                    value="<?php echo esc_attr( $title ); ?>"
-            />
-        </p>
-        <?php
-    }
- 
-    // Updating widget replacing old instances with new
-    public function update( $new_instance, $old_instance ) {
-        $instance          = array();
-        $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
- 
-        return $instance;
-    }
- 
-    // Class wpb_widget ends here
-}
- 
-// Register and load the widget
-function software_post_tag_widget_load() {
-    register_widget( 'software_post_tag_wpb_widget' );
-}
- 
-add_action( 'widgets_init', 'software_post_tag_widget_load' );
-
-
-
-
-/**
- * --- stratup Plan Text widget --
- */
- 
-
-// Creating the widget
-class software_plan_text_wpb_widget extends WP_Widget {
-    function __construct() {
-        parent::__construct(
-        // Base ID of your widget
-            'software_plan_text_wpb_widget',
- 
-            // Widget name will appear in UI
-            __( 'software Plan Text widget', 'CompaneyTextDomain' ),
- 
-            // Widget description
-            [
-                'description' => __( 'Plan Text For Blog Page', 'CompaneyTextDomain' ),
-            ]
-        );
-    }
- 
-    // Creating widget front-end
-    public function widget( $args, $instance ) {
-        $title = apply_filters( 'widget_title', $instance['title'] );
-
-        $palan_input_text = $instance['palan_input_text'];
-        $palan_btn_text = $instance['palan_btn_text'];
-        $palan_btn_url = $instance['palan_btn_url'];
-
-
-        // before and after widget arguments are defined by themes
-        echo $args['before_widget'];
-        if ( ! empty( $title ) ) {
-            echo $args['before_title'] . $title . $args['after_title'];
-
-        ?>
-
-            
-        <!-- Plain Text Start -->
-            <div class="bg-light text-center" style="padding: 30px;">
-                <p><?php echo $palan_input_text;?></p>
-                <a href="<?php echo $palan_btn_url;?>" class="btn btn-primary py-2 px-4"><?php echo $palan_btn_text;?></a>
-            </div>
-        <!-- Plain Text End -->
-
-
-        <?php
-            echo $args['after_widget'];
-        } 
-    }
-
- 
-    // Widget Settings Form ||  Backend
-    public function form( $instance ) {
-        if ( isset( $instance['title'] ) ) {
-            $title = $instance['title'];
-        } else {
-            $title = __( 'Plan Text', 'CompaneyTextDomain' );
-        }
-
-        $palan_input_text = $instance['palan_input_text'];
-        $palan_btn_text = $instance['palan_btn_text'];
-        $palan_btn_url = $instance['palan_btn_url'];
- 
-        // Widget admin form
-        ?>
-
-        <p>
-            <label for="<?php echo $this->get_field_id( 'title' ); ?>">
-                <?php _e( 'Title:', 'CompaneyTextDomain' ); ?>
-            </label>
-
-            <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>"
-            />
-        </p>
-        <p>
-            <label for="<?php echo $this->get_field_id( 'palan_input_text' ); ?>">
-                <?php _e( 'Text:', 'CompaneyTextDomain' ); ?>
-            </label>
-
-            <input class="widefat" id="<?php echo $this->get_field_id( 'palan_input_text' ); ?>" name="<?php echo $this->get_field_name( 'palan_input_text' ); ?>" type="text" value="<?php echo esc_attr( $palan_input_text ); ?>"
-            />
-        </p>
-        <p>
-            <label for="<?php echo $this->get_field_id( 'palan_btn_text' ); ?>">
-                <?php _e( 'Button Text:', 'CompaneyTextDomain' ); ?>
-            </label>
-
-            <input class="widefat" id="<?php echo $this->get_field_id( 'palan_btn_text' ); ?>" name="<?php echo $this->get_field_name( 'palan_btn_text' ); ?>" type="text" value="<?php echo esc_attr( $palan_btn_text); ?>"
-            />
-        </p>
-        <p>
-            <label for="<?php echo $this->get_field_id( 'palan_btn_text' ); ?>">
-                <?php _e( 'Button Url:', 'CompaneyTextDomain' ); ?>
-            </label>
-
-            <input class="widefat" id="<?php echo $this->get_field_id( 'palan_btn_url' ); ?>" name="<?php echo $this->get_field_name( 'palan_btn_url' ); ?>" type="url" value="<?php echo esc_attr( $palan_btn_url); ?>"
-            />
-        </p>
-        
-
-     <?php
-    }
- 
-    // Updating widget replacing old instances with new
-    public function update( $new_instance, $old_instance ) {
-        $instance          = array();
-        $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-        
-        //Data update
-        $instance['palan_input_text'] = $new_instance['palan_input_text'];
-        $instance['palan_btn_text'] = $new_instance['palan_btn_text'];
-        $instance['palan_btn_url'] = $new_instance['palan_btn_url'];
-
-        return $instance;
-    }
- 
-    // Class wpb_widget ends here
-}
- 
-// Register and load the widget
-function software_plan_text_widget_load() {
-    register_widget( 'software_plan_text_wpb_widget' );
-}
- 
-add_action( 'widgets_init', 'software_plan_text_widget_load' );
-
-
-
-
-/**
- * --- stratup Footer Address widget --
- */
- 
-
-// Stratup Footer Address Widget
-
-class startup_footer_address_widget extends WP_Widget {
- 
-    function __construct() {
-    parent::__construct(
-     
-        'startup_footer_address_widget', 
-        __('Startup Footer Address Widget', 'startup'), 
-        array( 'description' => __( 'Sample widget based on WPBeginner Tutorial', 'startup' ), )
-        );
-    }
-     
-    // Creating widget front-end
-     
-    public function widget( $args, $instance ) {
-        $title = apply_filters( 'widget_title', $instance['title'] );
-      
-        $footer_address = $instance['footer_address'];
-        $footer_email = $instance['footer_email'];
-        $footer_phone = $instance['footer_phone'];
-        $footer_mobile = $instance['footer_mobile'];
-        $footer_tw_link = $instance['footer_tw_link'];
-        $footer_fb_link = $instance['footer_fb_link'];
-        $footer_ln_link = $instance['footer_ln_link'];
-        $footer_ins_link = $instance['footer_ins_link'];
-     
-    // before and after widget arguments are defined by themes
-    echo $args['before_widget'];
-    if ( ! empty( $title ) )
-    echo $args['before_title'] . $title . $args['after_title'];
-
-    if($footer_address) {
-        ?>
-            <div class="d-flex mb-2">
-                <i class="fas fa-home text-primary me-2 mt-1"></i>
-                <p class="mb-0"><?php echo $footer_address;?></p>
-            </div>
-        <?php
-    }
-    if($footer_email) {
-    ?>
-        <div class="d-flex mb-2">
-            <i class="fas fa-envelope text-primary me-2 mt-1"></i>
-            <p class="mb-0"><?php echo $footer_email;?></p>
-        </div>
-    <?php
-    }
-
-    if($footer_phone) {
-        ?>
-            <div class="d-flex mb-2">
-                <i class="fas fa-phone-alt text-primary me-2 mt-1"></i>
-                <p class="mb-0"><?php echo $footer_phone;?></p>
-            </div>
-        <?php
-    }
-
-    if($footer_mobile) {
-        ?>
-            <div class="d-flex mb-2">
-                <i class="fas fa-mobile-alt text-primary me-2 mt-1"></i>
-                <p class="mb-0"><?php echo $footer_mobile;?></p>
-            </div>
-        <?php
-    }
-
-    ?>
-    <div class="d-flex mt-4">
-        <?php
-            if($footer_tw_link) {
-        ?>
-            <a class="btn btn-primary btn-square me-2" href="<?php echo $footer_tw_link;?>"><i class="fab fa-twitter fw-normal"></i></a>
-        <?php
-            }
-        ?>
-
-        <?php
-            if($footer_fb_link) {
-        ?>
-            <a class="btn btn-primary btn-square me-2" href="<?php echo $footer_fb_link;?>"><i class="fab fa-facebook-f fw-normal"></i></a>
-        <?php
-            }
-        ?>
-
-        <?php
-            if($footer_ln_link) {
-        ?>
-            <a class="btn btn-primary btn-square me-2" href="<?php echo $footer_ln_link;?>"><i class="fab fa-linkedin-in fw-normal"></i></a>
-        <?php
-            }
-        ?>
-
-        <?php
-            if($footer_ins_link) {
-        ?>
-            <a class="btn btn-primary btn-square" href="<?php echo $footer_ins_link;?>"><i class="fab fa-instagram fw-normal"></i></a>
-        <?php
-            }
-        ?>
-    </div>
-<?php
-    echo $args['after_widget'];
-    
-}
-     
-    // Widget Backend
-    public function form( $instance ) {
-    if ( isset( $instance[ 'title' ] ) ) {
-        $title = $instance[ 'title' ];
-    }
-    else {
-        $title = __( 'Get in touch', 'wpb_widget_domain' );
-    }
-   
-    $footer_address = $instance['footer_address'];
-    $footer_email = $instance['footer_email'];
-    $footer_phone = $instance['footer_phone'];
-    $footer_mobile = $instance['footer_mobile'];
-    $footer_tw_link = $instance['footer_tw_link'];
-    $footer_fb_link = $instance['footer_fb_link'];
-    $footer_ln_link = $instance['footer_ln_link'];
-    $footer_ins_link = $instance['footer_ins_link'];
-
-    // Widget admin form
-    ?>
-    <p>
-        <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
-    </p>
-    <p>
-        <label for="<?php echo $this->get_field_id( 'footer_address' ); ?>"><?php _e( 'Address:' ); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id( 'footer_address' ); ?>" name="<?php echo $this->get_field_name( 'footer_address' ); ?>" type="text" value="<?php echo esc_attr( $footer_address ); ?>" />
-    </p>
-    <p>
-        <label for="<?php echo $this->get_field_id( 'footer_email' ); ?>"><?php _e( 'Email:' ); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id( 'footer_email' ); ?>" name="<?php echo $this->get_field_name( 'footer_email' ); ?>" type="email" value="<?php echo esc_attr( $footer_email ); ?>" />
-    </p>
-    <p>
-        <label for="<?php echo $this->get_field_id( 'footer_phone' ); ?>"><?php _e( 'Phone:' ); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id( 'footer_phone' ); ?>" name="<?php echo $this->get_field_name( 'footer_phone' ); ?>" type="number" value="<?php echo esc_attr( $footer_phone ); ?>" />
-    </p>
-    <p>
-        <label for="<?php echo $this->get_field_id( 'footer_mobile' ); ?>"><?php _e( 'Mobile:' ); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id( 'footer_mobile' ); ?>" name="<?php echo $this->get_field_name( 'footer_mobile' ); ?>" type="number" value="<?php echo esc_attr( $footer_mobile ); ?>" />
-    </p>
-    <p>
-        <label for="<?php echo $this->get_field_id( 'footer_tw_link' ); ?>"><?php _e( 'Twitter Link:' ); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id( 'footer_tw_link' ); ?>" name="<?php echo $this->get_field_name( 'footer_tw_link' ); ?>" type="url" value="<?php echo esc_attr( $footer_tw_link ); ?>" />
-    </p>
-    <p>
-        <label for="<?php echo $this->get_field_id( 'footer_fb_link' ); ?>"><?php _e( 'Facebook Link:' ); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id( 'footer_fb_link' ); ?>" name="<?php echo $this->get_field_name( 'footer_fb_link' ); ?>" type="url" value="<?php echo esc_attr( $footer_fb_link ); ?>" />
-    </p>
-    <p>
-        <label for="<?php echo $this->get_field_id( 'footer_ln_link' ); ?>"><?php _e( 'Linkedin Link:' ); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id( 'footer_ln_link' ); ?>" name="<?php echo $this->get_field_name( 'footer_ln_link' ); ?>" type="url" value="<?php echo esc_attr( $footer_ln_link ); ?>" />
-    </p>
-    <p>
-        <label for="<?php echo $this->get_field_id( 'footer_ins_link' ); ?>"><?php _e( 'Instagram Link:' ); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id( 'footer_ins_link' ); ?>" name="<?php echo $this->get_field_name( 'footer_ins_link' ); ?>" type="url" value="<?php echo esc_attr( $footer_ins_link ); ?>" />
-    </p>
-    <?php
-    }
-     
-    // Updating widget replacing old instances with new
-    public function update( $new_instance, $old_instance ) {
-        $instance = array();
-        $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-       
-        $instance['footer_address'] = $new_instance['footer_address'];
-        $instance['footer_email'] = $new_instance['footer_email'];
-        $instance['footer_phone'] = $new_instance['footer_phone'];
-        $instance['footer_mobile'] = $new_instance['footer_mobile'];
-        $instance['footer_tw_link'] = $new_instance['footer_tw_link'];
-        $instance['footer_fb_link'] = $new_instance['footer_fb_link'];
-        $instance['footer_ln_link'] = $new_instance['footer_ln_link'];
-        $instance['footer_ins_link'] = $new_instance['footer_ins_link'];
-        return $instance;
-    }
-     
-    // Class wpb_widget ends here
-    } 
-     
-    // Register and load the widget
-    function startup_footer_address_load_widget() {
-        register_widget( 'startup_footer_address_widget' );
-    }
-add_action( 'widgets_init', 'startup_footer_address_load_widget' );
+// Footer Address widget 
+include_once get_template_directory().'/inc/widgets/footer-widgit.php';
