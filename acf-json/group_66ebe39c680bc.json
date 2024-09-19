@@ -1,0 +1,159 @@
+{
+    "key": "group_66ebe39c680bc",
+    "title": "Theme Option",
+    "fields": [
+        {
+            "key": "field_66ebe480de8cd",
+            "label": "Header Info",
+            "name": "header_info",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 3,
+            "layout": "table",
+            "button_label": "Add New Header Text",
+            "sub_fields": [
+                {
+                    "key": "field_66ebe4a4de8ce",
+                    "label": "Header Icon",
+                    "name": "header_icon",
+                    "type": "font-awesome",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "icon_sets": [
+                        "fas",
+                        "far",
+                        "fab"
+                    ],
+                    "custom_icon_set": "",
+                    "default_label": "",
+                    "default_value": "",
+                    "save_format": "class",
+                    "allow_null": 0,
+                    "show_preview": 0,
+                    "enqueue_fa": 0,
+                    "fa_live_preview": "",
+                    "choices": []
+                },
+                {
+                    "key": "field_66ebe4d8de8cf",
+                    "label": "Header info",
+                    "name": "header_info",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
+            "key": "field_66ebead459353",
+            "label": "Header Social Icone",
+            "name": "header_social_icone",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 5,
+            "layout": "table",
+            "button_label": "Add New Socil Icone",
+            "sub_fields": [
+                {
+                    "key": "field_66ebec5259354",
+                    "label": "Header Socal Icon",
+                    "name": "header_socal_icon",
+                    "type": "font-awesome",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "icon_sets": [
+                        "fas",
+                        "far",
+                        "fad",
+                        "fab"
+                    ],
+                    "custom_icon_set": "",
+                    "default_label": "",
+                    "default_value": "",
+                    "save_format": "class",
+                    "allow_null": 0,
+                    "show_preview": 0,
+                    "enqueue_fa": 0,
+                    "fa_live_preview": "",
+                    "choices": []
+                },
+                {
+                    "key": "field_66ebec9359355",
+                    "label": "Header Socal Icon link",
+                    "name": "header_socal_icon_link",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-general-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1726738331
+}

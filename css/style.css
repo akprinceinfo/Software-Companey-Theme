@@ -122,6 +122,22 @@ h6,
     text-align: center;
 }
 
+
+
+
+/* top header icon  */
+
+.d-inline-flex.align-items-center a {
+	padding-top: 7px;
+	margin: 0 5px;
+}
+.d-inline-flex.align-items-center small i {
+	padding-right: 5px;
+}
+
+
+
+
 /* logo add  */
 #hrader_logo img{
     max-width: 100px;

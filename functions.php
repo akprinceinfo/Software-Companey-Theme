@@ -401,8 +401,20 @@ function software_change_submit_button_text( $defaults ) {
 add_filter( 'comment_form_defaults', 'software_change_submit_button_text' );
 
 
+// Theme Option with ACF 
+if( function_exists('acf_add_options_page') ) {
 
+    acf_add_options_page(array(
+        'page_title'    => 'Theme General Settings',
+        'menu_title'    => 'Theme Settings',
+        'menu_slug'     => 'theme-general-settings',
+        'capability'    => 'edit_posts',
+        'redirect'      => false
+    ));
 
+    
+
+}
 
 //  serch widget
 include_once get_template_directory().'/inc/widgets/serch-widget.php';
