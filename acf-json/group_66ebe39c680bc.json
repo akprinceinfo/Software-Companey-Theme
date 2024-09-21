@@ -3,6 +3,22 @@
     "title": "Theme Option",
     "fields": [
         {
+            "key": "field_66ee551487e25",
+            "label": "Header Information",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_66ebe480de8cd",
             "label": "Header Info",
             "name": "header_info",
@@ -69,6 +85,22 @@
                     "maxlength": ""
                 }
             ]
+        },
+        {
+            "key": "field_66ee556e99d3d",
+            "label": "Header Icon",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_66ebead459353",
@@ -155,5 +187,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726738331
+    "modified": 1726895546
 }

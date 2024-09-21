@@ -716,3 +716,8 @@ h6,
     background-color: #2bb1e0;
     border-color: #1facde;
   }
+
+/* Client overview  */
+  .FactsIcon i {
+	font-size: 2rem;
+}

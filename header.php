@@ -28,8 +28,7 @@
                     
                 <?php
                     
-                    $header_infos = get_field('header_info', 'option');
-                        
+                    $header_infos = get_field('header_info', 'options');
                         foreach($header_infos as $info) {
                     ?>
                        <small class="me-3 text-light"><i class="<?php echo $info['header_icon'] ?>"> </i><?php echo $info['header_info'] ?></small>
