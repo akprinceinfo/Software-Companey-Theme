@@ -4,15 +4,23 @@
         <div class="container py-5 mb-5">
             <div class="bg-white">
                 <div class="owl-carousel vendor-carousel">
-                    <img src="<?php echo get_template_directory_uri() ?>/img/vendor-1.jpg" alt="">
-                    <img src="<?php echo get_template_directory_uri() ?>/img/vendor-2.jpg" alt="">
-                    <img src="<?php echo get_template_directory_uri() ?>/img/vendor-3.jpg" alt="">
-                    <img src="<?php echo get_template_directory_uri() ?>/img/vendor-4.jpg" alt="">
-                    <img src="<?php echo get_template_directory_uri() ?>/img/vendor-5.jpg" alt="">
-                    <img src="<?php echo get_template_directory_uri() ?>/img/vendor-6.jpg" alt="">
-                    <img src="<?php echo get_template_directory_uri() ?>/img/vendor-7.jpg" alt="">
-                    <img src="<?php echo get_template_directory_uri() ?>/img/vendor-8.jpg" alt="">
-                    <img src="<?php echo get_template_directory_uri() ?>/img/vendor-9.jpg" alt="">
+                    <?php 
+
+                        $footer_logo = get_field('footer_logo','options');
+                        $footer_description = get_field('footer_description','options');
+                        $footer_subcription = get_field('footer_subcription','options');
+
+                        $copy_right = get_field('copy_right','options');
+
+                        $client_carousels = get_field('client_carousels','options');
+                            foreach($client_carousels as $client_carousel){
+                        ?>
+                            <img src="<?php echo $client_carousel['client_logo']['url'] ; ?>" alt="">
+                        <?php
+                            };
+                    ?>
+                    
+                   
                 </div>
             </div>
         </div>
@@ -26,15 +34,14 @@
                 <div class="col-lg-4 col-md-6 footer-about">
                     <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
                         <a href="index.html" class="navbar-brand">
-                            <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>Startup</h1>
+                            <h1 class="m-0 text-white"><img src="<?php echo $footer_logo['url'] ?>" alt="" srcset=""></h1>
                         </a>
-                        <p class="mt-3 mb-4">Lorem diam sit erat dolor elitr et, diam lorem justo amet clita stet eos sit. Elitr dolor duo lorem, elitr clita ipsum sea. Diam amet erat lorem stet eos. Diam amet et kasd eos duo.</p>
-                        <form action="">
-                            <div class="input-group">
-                                <input type="text" class="form-control border-white p-3" placeholder="Your Email">
-                                <button class="btn btn-dark">Sign Up</button>
-                            </div>
-                        </form>
+                        <p class="mt-3 mb-4"><?php echo $footer_description ?></p>
+                        <!-- Footer Subcrition  -->
+                        <?php 
+                            echo do_shortcode(" . $footer_subcription .");
+                        ?>
+
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-6">
@@ -78,10 +85,7 @@
             <div class="row justify-content-end">
                 <div class="col-lg-8 col-md-6">
                     <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
-                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">Your Site Name</a>. All Rights Reserved. 
-						
-						<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-						Designed by <a class="text-white border-bottom" href="https://htmlcodex.com">HTML Codex</a></p>
+                        <p class="mb-0"><?php echo $copy_right ?></p>
                     </div>
                 </div>
             </div>

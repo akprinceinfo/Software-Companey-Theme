@@ -721,3 +721,10 @@ h6,
   .FactsIcon i {
 	font-size: 2rem;
 }
+
+
+/* footer  */
+.wpcf7-form-control.wpcf7-submit.has-spinner.btn.btn-dark {
+	width: 100%;
+	padding: 15px 0;
+}

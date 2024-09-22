@@ -1,9 +1,15 @@
+ 
+<?php 
+    $latest_blog_tittle = get_field('latest_blog_tittle','options');
+    $latest_blog_sub_tittle = get_field('latest_blog_sub_tittle','options');
+?>
+
 <!-- Blog Start -->
 <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Latest Blog</h5>
-                <h1 class="mb-0">Read The Latest Articles from Our Blog Post</h1>
+                <h5 class="fw-bold text-primary text-uppercase"><?php echo $latest_blog_tittle ?></h5>
+                <h1 class="mb-0"><?php echo $latest_blog_sub_tittle ?></h1>
             </div>
             <div class="row g-5">
                 

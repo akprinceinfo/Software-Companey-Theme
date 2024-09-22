@@ -1,9 +1,20 @@
+ 
+ 
+<?php 
+
+    $team_members_tittle = get_field('team_members_tittle','options');
+    $team_members_sub_tittle = get_field('team_members_sub_tittle','options');
+
+?>
+ 
+ 
+ 
  <!-- Team Start -->
  <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Team Members</h5>
-                <h1 class="mb-0">Professional Stuffs Ready to Help Your Business</h1>
+                <h5 class="fw-bold text-primary text-uppercase"><?php echo $team_members_tittle ;?></h5>
+                <h1 class="mb-0"><?php echo $team_members_sub_tittle; ?></h1>
             </div>
             <div class="row g-5">
                 <?php 

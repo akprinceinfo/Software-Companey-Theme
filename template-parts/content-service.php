@@ -1,9 +1,18 @@
+
+<?php 
+
+$our_services_header = get_field('our_services_header','options');
+$our_services_subtittle = get_field('our_services_subtittle','options');
+
+?>
+
+
 <!-- Service Start -->
 <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Our Services</h5>
-                <h1 class="mb-0">Custom IT Solutions for Your Successful Business</h1>
+                <h5 class="fw-bold text-primary text-uppercase"><?php echo $our_services_header ?></h5>
+                <h1 class="mb-0"><?php echo $our_services_subtittle ?></h1>
             </div>
             <div class="row g-5">
                 <?php
