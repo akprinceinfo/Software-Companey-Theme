@@ -11,7 +11,6 @@
         // Menus Add
         register_nav_menus(array(
             'primary_menu' => __( 'Primary Menu', 'CompaneyTextDomain' ),
-
             'footer1_menu' => __( 'Footer 1 Menu', 'CompaneyTextDomain' ),
             'footer2_menu' => __( 'Footer 2 Menu', 'CompaneyTextDomain' ),
         ));
@@ -432,3 +431,6 @@ include_once get_template_directory().'/inc/widgets/plan-textWidget.php';
  
 // Footer Address widget 
 include_once get_template_directory().'/inc/widgets/footer-widgit.php';
+
+// One click Demo Data Input
+include_once get_template_directory().'/inc/one-click-demo-data.php';

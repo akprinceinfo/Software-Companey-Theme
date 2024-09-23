@@ -26,11 +26,12 @@
                             $query->the_post();
                             $i++;
                         
-                        $slider_subtitle = get_field('slider_sub-title');
-                        $slider_button_text = get_field('slider_button_1text');
-                        $slider__button_1url = get_field('slider_button_1url');
-                        $slider_button_2_text = get_field('slider_button_2_text');
-                        $slider_slider_button_2url = get_field('slider_button_2url');
+                            $slider_subtitle = get_field('slider_sub-title');
+                            $slider_button_text = get_field('slider_button_1text');
+                            $slider__button_1url = get_field('slider_button_1url');
+                            $slider_button_2_text = get_field('slider_button_2_text');
+                            $slider_slider_button_2url = get_field('slider_button_2url');
+                        
                     ?>
 
                         <div class="carousel-item  <?php if($i==1) echo 'active'; ?>">
@@ -39,8 +40,25 @@
                                 <div class="p-3" style="max-width: 900px;">
                                     <h5 class="text-white text-uppercase mb-3 animated slideInDown"><?php echo $slider_subtitle ;?></h5>
                                     <h1 class="display-1 text-white mb-md-4 animated zoomIn"><?php the_title(); ?></h1>
-                                    <a href="<?php echo $slider__button_1url ;?>" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft"><?php echo $slider_button_text ;?></a>
-                                    <a href="<?php echo $slider_slider_button_2url ;?>" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight"><?php echo $slider_button_2_text ; ?></a>
+                                    <!-- Button Validation  1 -->
+                                    <?php 
+                                        if ($slider_button_text) {
+                                    ?>
+                                    <!-- esc_url : link chack because validation  -->
+                                    <a href="<?php echo esc_url($slider__button_1url) ;?>" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft"><?php echo $slider_button_text ;?></a>
+                                    <?php
+                                        }
+                                    ?>
+                                    <!-- Button Validation  2 -->
+                                    <?php 
+                                        if ($slider_button_2_text) {
+                                    ?>
+                                        <a href="<?php echo esc_url($slider_slider_button_2url) ;?>" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight"><?php echo $slider_button_2_text ; ?></a>
+                                    <?php
+                                        }
+                                    
+                                    ?>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -53,12 +71,13 @@
             <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
                 data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
+                <!-- esc_html : Html text show and textdomain -->
+                <span class="visually-hidden"><?php echo esc_html__('Previous','CompaneyTextDomain'); ?></span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
                 data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
+                <span class="visually-hidden"><?php echo esc_html__('Next','CompaneyTextDomain'); ?></span>
             </button>
         </div>
     <!-- ========== Slider End =========== -->
@@ -77,12 +96,12 @@
                     foreach($counters as $counter){
                     $i++;
                 ?>
-
-                <div class="col-lg-4 wow <?php echo $counter['counter_animation'];?>" data-wow-delay="<?php echo $counter['counter_delay'];?>">
+                    <!-- esc_attr : Securety -->
+                <div class="col-lg-4 wow <?php echo esc_attr($counter['counter_animation']);?>" data-wow-delay="<?php echo esc_attr($counter['counter_delay']);?>">
                     <div class="<?php if (($i % 2) == 0){echo "bg-light";}else echo "bg-primary"; ?> shadow d-flex align-items-center justify-content-center p-4 " style="height: 150px;">
                         <div class="<?php if (($i % 2) == 0){echo "bg-primary";}else echo"bg-white"; ?> d-flex align-items-center justify-content-center rounded mb-2 FactsIcon" style="width: 60px; height: 60px;">
 
-                            <i class="<?php echo $counter['counter_icone'];?> <?php if (($i % 2) == 0){echo "text-white";}else echo"text-primary"; ?>"></i>
+                            <i class="<?php echo esc_attr($counter['counter_icone']);?> <?php if (($i % 2) == 0){echo "text-white";}else echo"text-primary"; ?>"></i>
 
                         </div>
                         <div class="ps-4">
