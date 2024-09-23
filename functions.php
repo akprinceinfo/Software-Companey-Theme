@@ -252,7 +252,7 @@ include_once get_template_directory().'/inc/widgets/footer-widgit.php';
 include_once get_template_directory().'/inc/one-click-demo-data.php';
 
 // Plugin active Sujest || TGM Load
-include_once get_template_directory().'/inc/class-tgm-plugin-activation.php';
+include_once get_template_directory().'/inc/softwareCompaney-tgm.php';
 
 
 
